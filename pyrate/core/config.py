@@ -44,6 +44,8 @@ MINIMUM_NUMBER_EPOCHS = 3
 IFG_FILE_LIST = "ifgfilelist"
 #: BOOL (0/1); The interferogram processor used (0==ROIPAC, 1==GAMMA)
 PROCESSOR = "processor"
+#: STR; Name of directory containing input interferograms.
+OBS_DIR = 'obsdir'
 #: STR; Name of directory for saving output products
 OUT_DIR = "outdir"
 #: STR; Name of Digital Elevation Model file
