@@ -22,14 +22,10 @@ provided in the configs/ directory
 import itertools
 import logging
 import os
-import pathlib
 import re
 from os.path import splitext, split
 # coding: utf-8
-from typing import List, Tuple, Dict, Optional
-
-from constants import CONV2TIF, PREPIFG, PROCESS, MERGE
-from core.ifgconstants import YEARS_PER_DAY
+from typing import List
 
 _logger = logging.getLogger(__name__)
 
@@ -241,7 +237,7 @@ def write_config_file(params, output_conf_file):
                 f.write("".join([k, ":\t", "", "\n"]))
 
 
-def coherence_paths_for(path, params, tif=False) -> str:
+def coherence_paths_for(path, params, tif=False) -> List[str]:
     """Returns path to coherence file for given interferogram. Pattern matches
     based on epoch in filename.
     
