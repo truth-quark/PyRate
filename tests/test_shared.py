@@ -33,11 +33,11 @@ from numpy.testing import assert_array_equal
 from . import common
 import conv2tif
 import prepifg
-from core.orbital import prepare_ifgs
+from pyrate.core.orbital import prepare_ifgs
 from common import SML_TEST_TIF, SML_TEST_DEM_TIF, TEMPDIR
-from core import config as cf, prepifg_helper
-from core.shared import Ifg, DEM, RasterException
-from core.shared import cell_size, _utm_zone
+from pyrate.core import config as cf, prepifg_helper
+from pyrate.core.shared import Ifg, DEM, RasterException
+from pyrate.core.shared import cell_size, _utm_zone
 from configuration import Configuration
 
 UseExceptions()

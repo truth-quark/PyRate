@@ -36,13 +36,13 @@ from common import SML_TEST_LEGACY_ORBITAL_DIR
 from common import SML_TEST_TIF, small_data_setup
 from common import TEST_CONF_ROIPAC, IFMS16
 from common import small_ifg_file_list
-from core import algorithm, config as cf
-from core.orbital import INDEPENDENT_METHOD, NETWORK_METHOD, PLANAR, QUADRATIC, PART_CUBIC
-from core.orbital import OrbitalError, _orbital_correction
-from core.orbital import _get_num_params, remove_orbital_error
-from core.orbital import get_design_matrix, get_network_design_matrix
-from core.shared import Ifg
-from core.shared import nanmedian
+from pyrate.core import algorithm, config as cf
+from pyrate.core.orbital import INDEPENDENT_METHOD, NETWORK_METHOD, PLANAR, QUADRATIC, PART_CUBIC
+from pyrate.core.orbital import OrbitalError, _orbital_correction
+from pyrate.core.orbital import _get_num_params, remove_orbital_error
+from pyrate.core.orbital import get_design_matrix, get_network_design_matrix
+from pyrate.core.shared import Ifg
+from pyrate.core.shared import nanmedian
 from common import small5_mock_ifgs, MockIfg
 from configuration import Configuration
 # TODO: Purpose of this variable? Degrees are 1, 2 and 3 respectively

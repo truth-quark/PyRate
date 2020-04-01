@@ -41,9 +41,9 @@ TEST_MODULE_PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(PYRATE_MODULE_PATH)
 sys.path.append(TEST_MODULE_PATH)
 
-from core import algorithm, ifgconstants as ifc, config as cf, timeseries, mst, stack
-from core.shared import Ifg, nan_and_mm_convert, get_geotiff_header_info, write_output_geotiff
-from core.logger import pyratelogger as log
+from pyrate.core import algorithm, ifgconstants as ifc, config as cf, timeseries, mst, stack
+from pyrate.core.shared import Ifg, nan_and_mm_convert, get_geotiff_header_info, write_output_geotiff
+from pyrate.core.logger import pyratelogger as log
 
 PYRATEPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPDIR = tempfile.gettempdir()

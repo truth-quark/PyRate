@@ -36,8 +36,8 @@ import prepifg
 from common import PREP_TEST_TIF, SML_TEST_DEM_DIR
 from common import SML_TEST_DEM_TIF
 from common import SML_TEST_LEGACY_PREPIFG_DIR
-from core import config as cf
-from core.config import (
+from pyrate.core import config as cf
+from pyrate.core.config import (
     DEM_HEADER_FILE,
     NO_DATA_VALUE,
     IFG_FILE_LIST,
@@ -55,11 +55,11 @@ from core.config import (
     APS_METHOD,
     APS_CORRECTION,
 )
-from core.config import mlooked_path
-from core.prepifg_helper import CUSTOM_CROP, MAXIMUM_CROP, MINIMUM_CROP, ALREADY_SAME_SIZE
-from core.prepifg_helper import _resample, PreprocessError, CustomExts
-from core.shared import Ifg, DEM
-from core.orbital import prepare_ifgs
+from pyrate.core.config import mlooked_path
+from pyrate.core.prepifg_helper import CUSTOM_CROP, MAXIMUM_CROP, MINIMUM_CROP, ALREADY_SAME_SIZE
+from pyrate.core.prepifg_helper import _resample, PreprocessError, CustomExts
+from pyrate.core.shared import Ifg, DEM
+from pyrate.core.orbital import prepare_ifgs
 from configuration import Configuration
 import pathlib
 

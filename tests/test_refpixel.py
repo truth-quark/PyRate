@@ -27,8 +27,8 @@ from . import common
 import process
 from common import TEST_CONF_ROIPAC
 from common import small_data_setup, MockIfg, small_ifg_file_list
-from core import config as cf
-from core.refpixel import ref_pixel, _step
+from pyrate.core import config as cf
+from pyrate.core.refpixel import ref_pixel, _step
 from configuration import Configuration
 
 # TODO: figure out how  editing  resource.setrlimit fixes the error

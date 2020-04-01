@@ -25,8 +25,8 @@ from numpy import empty, array, nan, isnan, sum as nsum
 
 from . import common
 from common import MockIfg, small5_mock_ifgs, small_data_setup
-from core import algorithm, config as cf, mst
-from core.shared import IfgPart, Tile
+from pyrate.core import algorithm, config as cf, mst
+from pyrate.core.shared import IfgPart, Tile
 from configuration import Configuration
 
 

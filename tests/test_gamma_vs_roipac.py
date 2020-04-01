@@ -26,8 +26,8 @@ import unittest
 
 from . import common
 from common import SML_TEST_DIR, small_data_setup, remove_tifs
-from core import ifgconstants as ifc, config as cf
-from core.config import (
+from pyrate.core import ifgconstants as ifc, config as cf
+from pyrate.core.config import (
     DEM_HEADER_FILE,
     NO_DATA_VALUE,
     IFG_FILE_LIST,
@@ -44,7 +44,7 @@ from core.config import (
     APS_INCIDENCE_MAP,
     APS_ELEVATION_MAP,
 )
-from core.prepifg_helper import _is_number
+from pyrate.core.prepifg_helper import _is_number
 from main import prepifg_handler, conv2tif_handler
 from . import common
 

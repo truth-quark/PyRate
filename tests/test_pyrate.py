@@ -27,12 +27,12 @@ from os.path import join
 import numpy as np
 
 from . import common
-import conv2tif
-import core.shared
-import prepifg
-import process
-from core import shared, config as cf, config, prepifg_helper
-from configuration import Configuration
+from pyrate import conv2tif
+from pyrate.configuration import Configuration
+from pyrate.core import shared, config as cf, prepifg_helper
+from pyrate import prepifg
+from pyrate import process
+
 
 # taken from
 # http://stackoverflow.com/questions/6260149/os-symlink-support-in-windows
@@ -242,7 +242,7 @@ class ParallelPyRateTests(unittest.TestCase):
         for interferogram_file in params["interferogram_files"]:
             cls.dest_paths.append(interferogram_file.sampled_path)
 
-        tiles = core.shared.get_tiles(cls.dest_paths[0], 3, 3)
+        tiles = shared.get_tiles(cls.dest_paths[0], 3, 3)
         ifgs = common.small_data_setup()
         process.main(params)
 

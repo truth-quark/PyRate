@@ -29,12 +29,12 @@
 #
 # from . import common
 # import conv2tif
-# import core.orbital
+# importpyrate.core.orbital
 # import prepifg
 # import process
-# from core import ifgconstants as ifc, config as cf
-# from core.ref_phs_est import ReferencePhaseError
-# from core.shared import CorrectionStatusError
+# from pyrate.core import ifgconstants as ifc, config as cf
+# from pyrate.core.ref_phs_est import ReferencePhaseError
+# from pyrate.core.shared import CorrectionStatusError
 #
 # legacy_ref_phs_method1 = [
 #     -18.2191658020020,
@@ -161,7 +161,7 @@
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #
 #         for i in ifgs:
 #             i.close()
@@ -252,7 +252,7 @@
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #
 #         for i in ifgs:
 #             i.close()
@@ -334,7 +334,7 @@
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #
 #         for i in ifgs:
 #             i.close()
@@ -420,7 +420,7 @@
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #
 #         for i in ifgs:
 #             i.close()

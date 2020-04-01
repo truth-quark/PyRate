@@ -28,15 +28,14 @@ from os.path import exists, join
 from numpy.testing import assert_array_almost_equal
 from osgeo import gdal
 
-from . import common
-import core.ifgconstants as ifc
-from common import HEADERS_TEST_DIR, PREP_TEST_OBS, PREP_TEST_TIF
-from common import SML_TEST_DEM_DIR, SML_TEST_OBS, TEMPDIR
-from common import SML_TEST_DEM_ROIPAC, SML_TEST_DEM_HDR
-from core import shared, roipac
-from core.config import INPUT_IFG_PROJECTION, NO_DATA_VALUE, OUT_DIR, IFG_FILE_LIST, PROCESSOR, DEM_HEADER_FILE
-from core.shared import GeotiffException
-from core.shared import write_fullres_geotiff
+import pyrate.core.ifgconstants as ifc
+from .common import HEADERS_TEST_DIR, PREP_TEST_OBS, PREP_TEST_TIF
+from .common import SML_TEST_DEM_DIR, SML_TEST_OBS, TEMPDIR
+from .common import SML_TEST_DEM_ROIPAC, SML_TEST_DEM_HDR
+from pyrate.core import shared, roipac
+from pyrate.core.config import INPUT_IFG_PROJECTION, NO_DATA_VALUE, OUT_DIR, IFG_FILE_LIST, PROCESSOR, DEM_HEADER_FILE
+from pyrate.core.shared import GeotiffException
+from pyrate.core.shared import write_fullres_geotiff
 
 gdal.UseExceptions()
 

@@ -17,22 +17,15 @@
 """
 This Python module contains tests for the timeseries.py PyRate module.
 """
-import os
-import shutil
-import sys
-import tempfile
 import unittest
 from datetime import date, timedelta
 from numpy import nan, asarray, where
-import numpy as np
 from numpy.testing import assert_array_almost_equal
 
 from . import common
-import core.orbital
-from core import ref_phs_est as rpe, config as cf, mst, covariance
-import process, prepifg, conv2tif
-from core.timeseries import time_series
-from configuration import Configuration
+from pyrate.core import config as cf, mst, covariance
+from pyrate.core.timeseries import time_series
+
 
 def default_params():
     """ """
@@ -136,7 +129,7 @@ class TimeSeriesTests(unittest.TestCase):
 #         # mst_grid = common.mst_calculation(dest_paths, params)
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #         ifgs = common.prepare_ifgs_without_phase(dest_paths, params)
 #         for ifg in ifgs:
 #             print(ifg.nodata_value)
@@ -234,7 +227,7 @@ class TimeSeriesTests(unittest.TestCase):
 #         refx, refy = process._ref_pixel_calc(dest_paths, params)
 #
 #         # Estimate and remove orbit errors
-#         core.orbital.remove_orbital_error(ifgs, params)
+#        pyrate.core.orbital.remove_orbital_error(ifgs, params)
 #         ifgs = common.prepare_ifgs_without_phase(dest_paths, params)
 #         for ifg in ifgs:
 #             ifg.close()
