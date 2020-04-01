@@ -18,8 +18,8 @@ This Python module contains a collection of generic algorithms used in PyRate
 """
 from numpy import unique, histogram
 
-from core.ifgconstants import DAYS_PER_YEAR
-from core.shared import EpochList, IfgException, PrereadIfg
+from pyrate.core.ifgconstants import DAYS_PER_YEAR
+from pyrate.core.shared import EpochList, IfgException, PrereadIfg
 
 
 def ifg_date_index_lookup(ifgs, date_pair):

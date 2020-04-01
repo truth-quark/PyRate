@@ -28,7 +28,7 @@ from osgeo import gdal
 from osgeo import gdalconst
 
 
-from constants import (
+from pyrate.constants import (
     CROP_OPTIONS,
     GRID_TOL,
     GDAL_X_CELLSIZE,
@@ -40,11 +40,11 @@ from constants import (
     CUSTOM_CROP,
     ALREADY_SAME_SIZE,
 )
-from core import shared, config as cf, gamma, roipac, ifgconstants as ifc
-from core.gdal_python import _crop_resample_setup, _setup_source, coherence_masking, gdal_average, _alignment
-from core.logger import pyratelogger as log
-from core.mpiops import rank, comm, size, chunks
-from core.shared import Ifg, DEM
+from pyrate.core import shared, config as cf, gamma, roipac, ifgconstants as ifc
+from pyrate.core.gdal_python import _crop_resample_setup, _setup_source, coherence_masking, gdal_average, _alignment
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.mpiops import rank, comm, size, chunks
+from pyrate.core.shared import Ifg, DEM
 
 GAMMA = 1
 ROIPAC = 0

@@ -23,14 +23,13 @@ from collections import OrderedDict
 from os.path import join
 
 import numpy as np
-from core import ifgconstants as ifc, mpiops, config as cf
-from core import shared, algorithm, orbital, ref_phs_est
-from core import stack, refpixel
-from core import timeseries, mst, covariance as vcm_module
-from core.aps import _wrap_spatio_temporal_filter
-from core.logger import pyratelogger as log
-from core.shared import Ifg, PrereadIfg
-from osgeo import osr
+from pyrate.core import ifgconstants as ifc, mpiops, config as cf
+from pyrate.core import shared, algorithm, orbital, ref_phs_est
+from pyrate.core import stack, refpixel
+from pyrate.core import timeseries, mst, covariance as vcm_module
+from pyrate.core.aps import _wrap_spatio_temporal_filter
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import Ifg, PrereadIfg
 from osgeo import gdal
 
 MASTER_PROCESS = 0

@@ -27,8 +27,8 @@ from osgeo import ogr
 from osgeo import gdalconst
 from osgeo import gdal_array
 
-from core import shared, ifgconstants as ifc, gamma
-import common
+from pyrate.core import shared, ifgconstants as ifc, gamma
+from tests import common
 
 elevation_file = os.path.join(common.SML_TEST_GAMMA, os.path.splitext(common.SML_TEST_DEM_GAMMA)[0] + ".lv_theta")
 

@@ -234,11 +234,39 @@ def write_config_file(params, output_conf_file):
             if v is not None:
                 f.write("".join([k, ":\t", str(v), "\n"]))
             else:
-                f.write("".join([k, ":\t", "", "\n"]))
+                f.write(''.join([k, ':\t', '', '\n']))
 
+def transform_params(params):
+    """
+    Returns subset of all parameters for cropping and multilooking.
+
+    :param dict params: Parameter dictionary
+
+    :return: xlooks, ylooks, crop
+    :rtype: int
+    """
+
+    t_params = [IFG_LKSX, IFG_LKSY, IFG_CROP_OPT]
+    xlooks, ylooks, crop = [params[k] for k in t_params]
+    return xlooks, ylooks, crop
+
+def original_ifg_paths(ifglist_path, obs_dir):
+    """
+    Returns sequence of paths to files in given ifglist file.
+
+    Args:
+        ifglist_path: Absolute path to interferogram file list.
+        obs_dir: Absolute path to observations directory.
+
+    Returns:
+        list: List of full paths to interferogram files.
+    """
+    ifglist = parse_namelist(ifglist_path)
+    return [os.path.join(obs_dir, p) for p in ifglist]
 
 def coherence_paths_for(path, params, tif=False) -> List[str]:
-    """Returns path to coherence file for given interferogram. Pattern matches
+    """
+    Returns path to coherence file for given interferogram. Pattern matches
     based on epoch in filename.
     
     Example:
@@ -275,6 +303,27 @@ def coherence_paths_for(path, params, tif=False) -> List[str]:
             matches[i] = m.replace("_tif", "")
 
     return [os.path.join(coherence_dir, m) for m in matches]
+
+
+def get_dest_paths(base_paths, crop, params, looks) -> List[str]:
+    """
+    Determines the full path names for the destination multilooked files
+
+    :param list base_paths: original interferogram paths
+    :param int crop: Crop option applied
+    :param dict params: Parameters dictionary
+    :param int looks: number of range looks applied
+
+    :return: full path names for destination files
+    :rtype: list
+    """
+
+    dest_mlooked_ifgs = [mlooked_path(os.path.basename(q).split('.')[0] + '_'
+                                      + os.path.basename(q).split('.')[1] +
+                                      '.tif', looks=looks, crop_out=crop)
+                         for q in base_paths]
+
+    return [os.path.join(params[OUT_DIR], p) for p in dest_mlooked_ifgs]
 
 
 def coherence_paths(params) -> List[str]:

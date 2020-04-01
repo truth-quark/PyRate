@@ -27,13 +27,13 @@ from numpy import isnan
 from scipy.fftpack import fft2, ifft2, fftshift, ifftshift
 from scipy.interpolate import griddata
 
-from core import shared, ifgconstants as ifc, mpiops, config as cf
-from core.algorithm import get_epochs
-from core.covariance import cvd_from_phase, RDist
-from core.logger import pyratelogger as log
-from core.shared import Ifg
-from core.timeseries import time_series
-from merge import _assemble_tiles
+from pyrate.core import shared, ifgconstants as ifc, mpiops, config as cf
+from pyrate.core.algorithm import get_epochs
+from pyrate.core.covariance import cvd_from_phase, RDist
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import Ifg
+from pyrate.core.timeseries import time_series
+from pyrate.merge import _assemble_tiles
 
 
 def _wrap_spatio_temporal_filter(ifg_paths, params, tiles, preread_ifgs):

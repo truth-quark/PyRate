@@ -16,37 +16,25 @@
 """
 This Python module implements residual orbital corrections for interferograms.
 """
+import shutil
 from collections import OrderedDict
-
-import numpy as np
-from numpy import dot, vstack, zeros, meshgrid
-from numpy import empty, isnan, reshape, float32, squeeze
-from numpy.linalg import pinv
-# from joblib import Parallel, delayed
-from scipy.linalg import lstsq
-
-
-from core.gdal_python import _crop_resample_setup, _setup_source, gdal_average, _alignment, coherence_masking
-
-
-from core import shared, ifgconstants as ifc, config as cf, prepifg_helper, mst
-from core.algorithm import master_slave_ids, get_all_epochs
-from core.logger import pyratelogger as log
-from core.shared import nanmedian, Ifg
-from numpy import array, where, nan, isnan, nanmean, float32, zeros, \
-    sum as nsum
-from osgeo import gdal
-import shutil
-from core import ifgconstants as ifc, config as cf
-from core.shared import Ifg, DEM, output_tiff_filename
-import os
-import shutil
-from collections import namedtuple
 from math import modf
 from numbers import Number
-from subprocess import check_call
-from tempfile import mkstemp
-import logging
+import numpy as np
+from numpy import dot, vstack, meshgrid, array, nan, isnan, nanmean, float32, zeros, sum as nsum, empty, reshape, \
+    squeeze
+from numpy.linalg import pinv
+from scipy.linalg import lstsq
+from osgeo import gdal
+
+from pyrate.core.gdal_python import _crop_resample_setup, _setup_source, gdal_average, _alignment, coherence_masking
+from pyrate.core import shared, prepifg_helper, mst
+from pyrate.core.algorithm import master_slave_ids, get_all_epochs
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import nanmedian, Ifg
+from pyrate.core import ifgconstants as ifc, config as cf
+from pyrate.core.shared import Ifg, DEM, output_tiff_filename
+
 # Constants
 MINIMUM_CROP = 1
 MAXIMUM_CROP = 2

@@ -26,18 +26,18 @@ from joblib import Parallel, delayed
 from networkx.classes.reportviews import EdgeView
 from numpy import array, nan, isnan, float32, empty, sum as nsum
 
-from core import config as cf
-# from core.algorithm import ifg_date_lookup
-from core.algorithm import ifg_date_index_lookup
-from core.shared import IfgPart, create_tiles
-from core.shared import joblib_log_level
+from pyrate.core import config as cf
+from pyrate.core.algorithm import ifg_date_index_lookup
+from pyrate.core.shared import IfgPart, create_tiles
+from pyrate.core.shared import joblib_log_level
+from pyrate.core.logger import pyratelogger as log
 
 np.seterr(invalid="ignore")  # stops RuntimeWarning in nan conversion
 
 # TODO: may need to implement memory saving row-by-row access
 # TODO: document weighting by either Nan fraction OR variance
 
-from core.logger import pyratelogger as log
+
 
 
 def mst_from_ifgs(ifgs):

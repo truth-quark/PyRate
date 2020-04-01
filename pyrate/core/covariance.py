@@ -27,14 +27,14 @@ from numpy.linalg import norm
 from scipy.fftpack import fft2, ifft2, fftshift
 from scipy.optimize import fmin
 
-from core import shared, ifgconstants as ifc, config as cf
-from core.algorithm import master_slave_ids
-from core.shared import PrereadIfg
+from pyrate.core import shared, ifgconstants as ifc, config as cf
+from pyrate.core.algorithm import master_slave_ids
+from pyrate.core.shared import PrereadIfg
+from pyrate.core.logger import pyratelogger as log
 
 # distance division factor of 1000 converts to km and is needed to match legacy output
 DISTFACT = 1000
 
-from core.logger import pyratelogger as log
 
 
 def _pendiffexp(alphamod, cvdav):

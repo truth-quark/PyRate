@@ -29,7 +29,7 @@ from tempfile import mkstemp
 from numpy import array, where, nan, isnan, nanmean, float32, zeros, sum as nsum
 from osgeo import gdal
 
-from core.shared import Ifg, DEM
+from pyrate.core.shared import Ifg, DEM
 
 ALREADY_SAME_SIZE = 4
 CustomExts = namedtuple("CustExtents", ["xfirst", "yfirst", "xlast", "ylast"])

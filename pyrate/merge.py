@@ -26,10 +26,10 @@ from os.path import join
 import numpy as np
 from osgeo import gdal
 
-from constants import REF_COLOR_MAP_PATH
-from core import shared, ifgconstants as ifc, mpiops, config as cf
-from core.logger import pyratelogger as log
-from core.shared import PrereadIfg
+from pyrate.constants import REF_COLOR_MAP_PATH
+from pyrate.core import shared, ifgconstants as ifc, mpiops, config as cf
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import PrereadIfg
 
 gdal.SetCacheMax(64)
 

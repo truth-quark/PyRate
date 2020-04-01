@@ -25,10 +25,10 @@ import numpy as np
 from joblib import Parallel, delayed
 from numpy import isnan, std, mean, sum as nsum
 
-import core.config as cf
-from core.logger import pyratelogger as log
-from core.shared import Ifg
-from core.shared import joblib_log_level
+import pyrate.core.config as cf
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import Ifg
+from pyrate.core.shared import joblib_log_level
 
 
 def convert_pixel_value_to_geographic_coordinate(refx, refy, transform):

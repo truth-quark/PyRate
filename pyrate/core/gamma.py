@@ -16,16 +16,15 @@
 """
 This Python module contains tools for reading GAMMA format input data.
 """
+# coding: utf-8
 import os
+from os.path import split
 import re
 from datetime import date, time, timedelta
-# coding: utf-8
-from os.path import split
-
 import numpy as np
 
-import core.ifgconstants as ifc
-from core import config as cf
+import pyrate.core.ifgconstants as ifc
+from pyrate.core import config as cf
 
 # constants
 GAMMA_DATE = "date"

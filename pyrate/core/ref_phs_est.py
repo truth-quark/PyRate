@@ -21,10 +21,10 @@ This Python module implements a reference phase estimation algorithm.
 import numpy as np
 from joblib import Parallel, delayed
 
-from core import ifgconstants as ifc, config as cf
-from core import mpiops
-from core.logger import pyratelogger as log
-from core.shared import joblib_log_level, nanmedian, Ifg
+from pyrate.core import ifgconstants as ifc, config as cf
+from pyrate.core import mpiops
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core.shared import joblib_log_level, nanmedian, Ifg
 
 MASTER_PROCESS = 0
 

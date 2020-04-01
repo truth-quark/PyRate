@@ -21,25 +21,25 @@ all other PyRate modules
 import errno
 import math
 import os
+from os.path import basename, join
 import struct
 from datetime import date
 from itertools import product
 from math import floor
-from os.path import basename, join
-
-import numpy as np
 import pkg_resources
 import pyproj
+
+import numpy as np
 from numpy import where, nan, isnan, sum as nsum, isclose
-
-from core import ifgconstants as ifc, mpiops, config as cf
-
-VERBOSE = True
-from core.logger import pyratelogger as log
 
 from osgeo import gdal
 from osgeo import osr
 from osgeo import gdalconst
+
+from pyrate.core.logger import pyratelogger as log
+from pyrate.core import ifgconstants as ifc, mpiops, config as cf
+
+VERBOSE = True
 
 
 gdal.UseExceptions()

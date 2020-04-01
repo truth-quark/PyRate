@@ -25,8 +25,8 @@ from joblib import Parallel, delayed
 from numpy import nan, isnan, sqrt, diag, delete, array, float32
 from scipy.linalg import solve, cholesky, qr, inv
 
-from core import config as cf
-from core.shared import joblib_log_level
+from pyrate.core import config as cf
+from pyrate.core.shared import joblib_log_level
 
 
 def stack_rate(ifgs, params, vcmt, mst=None):
