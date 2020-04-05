@@ -28,7 +28,7 @@ from numpy.testing import assert_array_almost_equal
 from . import common
 import core.orbital
 import process
-from common import small5_mock_ifgs, small5_ifgs, small_data_setup, prepare_ifgs_without_phase
+from common import small5_mock_ifgs, small5_ifgs, small_data_setup, prepare_ifgs_without_phase, PYRATEPATH
 from configuration import Configuration
 from core import shared
 
@@ -215,7 +215,7 @@ class LegacyEqualityTest(unittest.TestCase):
     def setUpClass(self):
         """ """
 
-        self.TEST_CONF_ROIPAC = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"tests", "test_data", "small_test","conf","pyrate_roipac_test.conf")
+        self.TEST_CONF_ROIPAC = os.path.join(PYRATEPATH,"tests", "test_data", "small_test","conf","pyrate_roipac_test.conf")
         conv2tif_handler(self.TEST_CONF_ROIPAC)
         prepifg_handler(self.TEST_CONF_ROIPAC)
 

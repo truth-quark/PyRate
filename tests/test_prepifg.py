@@ -67,7 +67,7 @@ gdal.UseExceptions()
 DUMMY_SECTION_NAME = "pyrate"
 
 if not exists(PREP_TEST_TIF):
-    sys.exit("ERROR: Missing 'prepifg' dir for unittests\n")
+    raise Exception(PREP_TEST_TIF+" not found.")
 
 
 # convenience ifg creation funcs

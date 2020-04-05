@@ -36,8 +36,13 @@ warnings.filterwarnings("ignore")
 from osgeo import gdal
 
 
-PYRATE_MODULE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "pyrate")
-TEST_MODULE_PATH = os.path.dirname(os.path.abspath(__file__))
+PYRATE_MODULE_PATH = "/home/travis/build/GeoscienceAustralia/PyRate/pyrate"
+TEST_MODULE_PATH = "/home/travis/build/GeoscienceAustralia/PyRate/tests"
+if not os.path.isdir(PYRATE_MODULE_PATH):
+    PYRATE_MODULE_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "pyrate")
+    TEST_MODULE_PATH = os.path.dirname(os.path.abspath(__file__))
+
+
 sys.path.append(PYRATE_MODULE_PATH)
 sys.path.append(TEST_MODULE_PATH)
 
@@ -45,7 +50,9 @@ from core import algorithm, ifgconstants as ifc, config as cf, timeseries, mst, 
 from core.shared import Ifg, nan_and_mm_convert, get_geotiff_header_info, write_output_geotiff
 from core.logger import pyratelogger as log
 
-PYRATEPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PYRATEPATH = "/home/travis/build/GeoscienceAustralia/PyRate"
+if not os.path.isdir(PYRATEPATH):
+    PYRATEPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPDIR = tempfile.gettempdir()
 
 BASE_TEST = join(PYRATEPATH, "tests", "test_data")

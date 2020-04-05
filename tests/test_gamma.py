@@ -33,7 +33,7 @@ from osgeo import gdal
 import conv2tif
 import core.ifgconstants as ifc
 import prepifg
-from common import GAMMA_TEST_DIR, SML_TEST_GAMMA
+from common import GAMMA_TEST_DIR, SML_TEST_GAMMA, PYRATEPATH
 from common import TEST_CONF_GAMMA, TEMPDIR
 from common import small_data_setup
 from core import shared, config as cf, gamma
@@ -43,7 +43,6 @@ from core.shared import write_fullres_geotiff, GeotiffException
 gdal.UseExceptions()
 
 LIGHTSPEED = 3e8  # approx
-PYRATEPATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class GammaCommandLineTests(unittest.TestCase):
@@ -334,7 +333,7 @@ class TestGammaParallelVsSerial(unittest.TestCase):
     def setUpClass(self):
         """ """
         # read in the params
-        self.TEST_CONF_GAMMA = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"tests", "test_data", "small_test","conf","pyrate_gamma_test.conf")
+        self.TEST_CONF_GAMMA = os.path.join(PYRATEPATH,"tests", "test_data", "small_test","conf","pyrate_gamma_test.conf")
         params = Configuration(self.TEST_CONF_GAMMA).__dict__
         glob_prefix = "*utm_unw_1rlks_1cr.tif"
 

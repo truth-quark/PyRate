@@ -1,0 +1,62 @@
+FROM centos:8
+RUN yum -y update && yum clean all
+RUN  yum groupinstall -y "Development Tools"
+RUN  yum install -y gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel gdbm-devel ncurses-devel wget
+RUN dnf update -y
+
+# install Python 3.7.4
+RUN wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz && \
+tar -zxf Python-3.7.4.tgz && \
+cd Python-3.7.4 && \
+./configure && \
+nproc | xargs -I % make -j% && \
+make install && \
+ln -s /usr/local/bin/pip3.7 /usr/bin/pip && \
+ln -s /usr/local/bin/python3.7 /usr/bin/python
+
+# install Proj 6.2.1
+RUN wget https://download.osgeo.org/proj/proj-6.2.1.tar.gz && \
+tar -zxf proj-6.2.1.tar.gz && \
+cd proj-6.2.1 && \
+./configure && \
+nproc | xargs -I % make -j% && \
+make install
+
+# install jasper
+RUN dnf config-manager --set-enabled PowerTools  && dnf install jasper-devel -y
+
+RUN yum install -y yum-utils epel-release
+RUN yum-config-manager --enable epel
+RUN yum install -y hdf5-devel
+
+RUN yum-config-manager --enable epel
+RUN yum install -y netcdf-devel
+
+# install GDAL 3.0.2
+RUN wget https://download.osgeo.org/gdal/3.0.2/gdal-3.0.2.tar.gz && \
+tar -zxf gdal-3.0.2.tar.gz && \
+cd gdal-3.0.2 && \
+./configure && \
+nproc | xargs -I % make -j% && \
+make install
+
+# install open-mpi 2.1.6
+RUN wget https://download.open-mpi.org/release/open-mpi/v2.1/openmpi-2.1.6.tar.gz && \
+tar -zxf openmpi-2.1.6.tar.gz && \
+cd openmpi-2.1.6 && \
+./configure && \
+nproc | xargs -I % make -j% && \
+make install
+
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+RUN echo '/usr/local/lib' >> /etc/ld.so.conf
+RUN ldconfig
+ADD . / PyRate/
+RUN cd PyRate && python setup.py install
+RUN pip uninstall GDAL -y
+RUN pip install GDAL==$(gdal-config --version)
+RUN cd PyRate && pytest tests/

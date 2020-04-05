@@ -22,6 +22,7 @@ import os
 import unittest
 
 from . import common
+from common import PYRATEPATH
 import conv2tif
 import prepifg
 import process
@@ -30,7 +31,7 @@ from configuration import Configuration
 
 class SystemTest(unittest.TestCase):
     def setUp(self):
-        self.root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.root_path = PYRATEPATH
 
         self.rows = 1
         self.cols = 1

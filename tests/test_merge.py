@@ -21,6 +21,7 @@ Run this module as 'mpirun -n 4 pytest tests/test_mpi.py'
 import os
 import unittest
 from . import common
+from common import PYRATEPATH
 from merge import create_png_from_tif
 
 legacy_maxvar = [
@@ -50,7 +51,7 @@ class MergingTest(unittest.TestCase):
     def test_png_creation(self):
         """ """
 
-        output_folder_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tests",
+        output_folder_path = os.path.join(PYRATEPATH, "tests",
                                           "test_data", "merge")
         create_png_from_tif(output_folder_path)
 

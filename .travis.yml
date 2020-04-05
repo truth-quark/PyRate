@@ -1,6 +1,6 @@
 branches:
   only:
-  - develop
+  - test
   - /^release-.*$/
   - /.*-travis$/
   - master
@@ -8,60 +8,39 @@ branches:
 os: linux
 dist: bionic # Ubuntu 18.04
 
-language: python
-cache: pip
-
-python:
-  - "3.6"
-  - "3.7"
-
-
 before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install gdal-bin
-  - sudo apt-get -y install libgdal-dev
-  - sudo apt-get -y install openmpi-bin
-  - sudo apt-get -y install libopenmpi-dev
-  - export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/include/gdal
-  - export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/gdal
-  - pip install -U pip
-  - pip install codecov
+  - export DEBIAN_FRONTEND=noninteractive
+  - sudo apt install g++ pkg-config build-essential wget libopenmpi-dev sqlite3 wget libssl-dev zlib1g-dev libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev libffi-dev -y
+  - sudo apt-get install make -y
+  - sudo apt-get install jasper -y
+  - sudo apt install python3.7 python3-pip -y
+  - wget https://github.com/sheecegardezi/ubuntu-package-binaries/raw/master/proj_6.2.1-1_amd64.deb
+  - sudo apt install /home/travis/build/GeoscienceAustralia/PyRate/proj_6.2.1-1_amd64.deb
+  - wget https://github.com/sheecegardezi/ubuntu-package-binaries/raw/master/gdal_3.0.2-1_amd64.deb
+  - sudo apt install /home/travis/build/GeoscienceAustralia/PyRate/gdal_3.0.2-1_amd64.deb
+  - export CPLUS_INCLUDE_PATH=/usr/include/gdal
+  - export C_INCLUDE_PATH=/usr/include/gdal
+  - export LC_ALL=C.UTF-8
+  - export LANG=C.UTF-8
 
 install:
-  - pip install -r requirements-test.txt
-  - pip install -r requirements-dev.txt
-  - python setup.py install
-  - export PYRATEPATH=$(pwd)
-  - export PYTHONPATH=$PYRATEPATH:$PYTHONPATH
-  - chmod 444 tests/test_data/small_test/tif/geo_070709-070813_unw.tif  # makes the file readonly, used in a test
+  - sudo sh -c "echo '/usr/local/lib' >> /etc/ld.so.conf"
+  - sudo ldconfig
+  - cd /home/travis/build/GeoscienceAustralia/PyRate
+  - python3 -m pip install --upgrade setuptools
+  - cd /home/travis/build/GeoscienceAustralia/PyRate
+  - sudo python3 setup.py install
+  - sudo python3 -m pip uninstall GDAL -y
+  - sudo python3 -m pip install GDAL==$(gdal-config --version)
 
-# command to run tests, e.g. python setup.py test
+# command to run tests
 script:
-  - pip install numpy==1.16.4
-  - pytest --cov-report term-missing:skip-covered --cov=pyrate tests/
+  - cd /home/travis/build/GeoscienceAustralia/PyRate
+  - python3 -m pytest --version
+  - python3 -m pytest tests/ -svv; echo $?
 
 after_success:
-  - codecov
-
-jobs:
-  include:
-    - stage: deploy
-      python: 3.6
-      script:
-        - pip install numpy==1.16.4
-        - cd docs && make html
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        keep-history: true
-        verbose: true
-        on:
-          branch: master
-        github-token: $GITHUB_TOKEN
-        local-dir: docs/_build/html
-        project_name: PyRate
-        email: insar@ga.gov.au
-        name: InSAR Team
+  - python3 -m codecov
 
 notifications:
   email:

@@ -135,7 +135,10 @@ def main():
     if args.verbosity:
         log.setLevel(args.verbosity)
         log.info("Verbosity set to " + str(args.verbosity) + ".")
-        PYRATEPATH = os.path.dirname(os.path.abspath(__file__))
+
+        PYRATEPATH = "/home/travis/build/GeoscienceAustralia/PyRate/"
+        if not os.path.isdir(PYRATEPATH):
+            PYRATEPATH = os.path.dirname(os.path.abspath(__file__))
         log_setting_file = os.path.join(PYRATEPATH, "utils", "log_settings.txt")
 
         with open(log_setting_file, "w") as myfile:
